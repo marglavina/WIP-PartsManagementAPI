@@ -22,18 +22,20 @@ public class CarBrandService {
          return carBrandRepository.save(carBrand);
     }
 
-    public Optional<CarBrand> updateCarBrand(CarBrand carBrand){
-        Integer updated = carBrandRepository.updateCarBrand(carBrand.getBrandName(), carBrand.getID());
+    public Optional<CarBrand> updateCarBrand(String brandNameOLD, CarBrand carBrand){
+        Integer updated = carBrandRepository.updateCarBrand(carBrand.getBrandName(), brandNameOLD);
         Optional<CarBrand> carBrandUpdated = carBrandRepository.findById(carBrand.getID());
 
         return carBrandUpdated;
     }
 
-    public String deleteCarBrand(Integer id) {
-        Integer deleted = carBrandRepository.deleteCarBrand(id);
+    public String deleteCarBrand(String brandName) {
+        Integer deleted = carBrandRepository.deleteCarBrand(brandName.replace("%20", " "));
+        System.out.println(deleted);
         switch (deleted){
             case 0: return "Something went wrong";
-            default: return "Car brand deleted";
+            case 1: return "Car brand deleted";
+            default: return "";
         }
     }
 }

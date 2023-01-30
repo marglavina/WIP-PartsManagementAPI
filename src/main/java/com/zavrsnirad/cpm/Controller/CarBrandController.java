@@ -25,13 +25,13 @@ public class CarBrandController {
         return carBrandService.addNewCarBrand(carBrand);
     }
 
-    @PutMapping("/carBrand/{id}")
-    public Optional<CarBrand> updateCarBrand(@PathVariable Integer id, @RequestBody CarBrand carBrand){
-        return carBrandService.updateCarBrand(carBrand);
+    @PutMapping("/carBrand/{brandNameOLD}")
+    public Optional<CarBrand> updateCarBrand(@PathVariable String brandNameOLD, @RequestBody CarBrand carBrand){
+        return carBrandService.updateCarBrand(brandNameOLD, carBrand);
     }
 
-    @DeleteMapping("/carBrand/{id}")
-    public String deleteCarBrand(@PathVariable Integer id){
-        return carBrandService.deleteCarBrand(id);
+    @DeleteMapping("/carBrand/{brandName}")
+    public String deleteCarBrand(@PathVariable String brandName){
+        return carBrandService.deleteCarBrand(brandName);
     }
 }

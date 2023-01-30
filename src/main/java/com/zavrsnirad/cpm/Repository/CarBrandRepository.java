@@ -17,11 +17,11 @@ public interface CarBrandRepository extends JpaRepository<CarBrand, Integer> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE CarBrand cb SET cb.brandName = ?1 where cb.brand_ID = ?2")
-    Integer updateCarBrand(String brand_name, Integer brand_ID);
+    @Query("UPDATE CarBrand cb SET cb.brandName = ?1 where cb.brandName = ?2")
+    Integer updateCarBrand(String brandNameNew, String brand_name);
 
     @Modifying
     @Transactional
-    @Query("DELETE FROM CarBrand cb WHERE cb.brand_ID = ?1")
-    Integer deleteCarBrand(Integer id);
+    @Query("DELETE FROM CarBrand cb WHERE cb.brandName = ?1")
+    Integer deleteCarBrand(String brandName);
 }
