@@ -15,6 +15,9 @@ public interface CarBrandRepository extends JpaRepository<CarBrand, Integer> {
     @Query("SELECT brandName from CarBrand")
     List<CarBrand> getAllCarBrand();
 
+    @Query("Select cb from CarBrand cb where cb.brandName = ?1")
+    CarBrand getCarBrandByBrandName(String brandName);
+
     @Modifying
     @Transactional
     @Query("UPDATE CarBrand cb SET cb.brandName = ?1 where cb.brandName = ?2")

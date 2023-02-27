@@ -41,6 +41,10 @@ public class CarModel {
         return carBrand;
     }
 
+    public void setCarBrand(CarBrand cb) {
+        this.carBrand = cb;
+    }
+
     @Override
     public String toString() {
         return "CarModel{" +

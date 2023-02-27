@@ -23,7 +23,7 @@ public class CarBrandService {
     }
 
     public Optional<CarBrand> updateCarBrand(String brandNameOLD, CarBrand carBrand){
-        Integer updated = carBrandRepository.updateCarBrand(carBrand.getBrandName(), brandNameOLD);
+        Integer updated = carBrandRepository.updateCarBrand(carBrand.getBrandName(), brandNameOLD.replace("%20", " "));
         Optional<CarBrand> carBrandUpdated = carBrandRepository.findById(carBrand.getID());
 
         return carBrandUpdated;
